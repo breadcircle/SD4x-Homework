@@ -30,22 +30,22 @@ function calculateFoodOrder(numAnimals, avgFood) {
  * and an array of the strings containing the names of the most popular days if there are more than one that are most popular
  */
 
-let Monday = new Weekday("Monday", 10);
-let Tuesday = new Weekday("Tuesday", 10);
-let Wednesday = new Weekday("Wednesday", 15);
-let Thursday = new Weekday("Thursday", 10);
-let Friday = new Weekday("Friday", 15);
+var day1 = new Weekday("Sunday", 100);
+var day2 = new Weekday("Monday", 300);
+var day4 = new Weekday("Wednesday", 300);
+var day3 = new Weekday("Tuesday", 150);
 
-let testWeekdays = [Monday, Tuesday, Wednesday, Thursday, Friday];
+var testWeekdays = [day1, day2, day3, day4];
 
 function mostPopularDays(week) {
     // IMPLEMENT THIS FUNCTION!
-    var arrayOfWeekdays = [week[0]];
-    var returnString = [];
 
-    if (week === null || week === [] || week === undefined) {
+    if (week == null || week.length === 0 || week === undefined) {
         return null;
     }
+
+    var arrayOfWeekdays = [week[0]];
+    var returnString = [];
 
     for (var i = 1; i < week.length; i++) {
         // console.log("week" + i + " traffic is " + week[i].traffic);
@@ -70,9 +70,9 @@ function mostPopularDays(week) {
     }
 }
 
-let testnames = ["Skippy The Rabbit", "Slowy the Turtle"];
-let testtypes = ["rabbit", "turtle"];
-let testbreeds = ["white rabbit", "giant turtle"];
+var testnames = ["Skippy The Rabbit", "Slowy the Turtle"];
+var testtypes = ["rabbit", "turtle"];
+var testbreeds = ["white rabbit", "giant turtle"];
 
 /**
  * Given three arrays of equal length containing information about a list of
@@ -97,7 +97,7 @@ function createAnimalObjects(names, types, breeds) {
     }
 
     for (var i = 0; i < names.length; i++) {
-        let testObject = new Animal(names[i], types[i], breeds[i]);
+        var testObject = new Animal(names[i], types[i], breeds[i]);
         arrayOfAnimalObjects.push( testObject );
     }
 
@@ -146,3 +146,15 @@ function helloworld() {
     return 'hello world!';
 }
 
+function TrieNode() {
+    this.children = [];
+    for (var i = 0; i < 27; i++)
+    {
+        this.children.push(null);
+    }
+}
+
+var root = new TrieNode();
+root.children[0] = new TrieNode();
+
+var test = root.children[1];
