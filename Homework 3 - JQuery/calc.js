@@ -1,9 +1,9 @@
 /*
  * Implement all your JavaScript in this file!
  */
-var firstNumber;
-var secondNumber;
-var finalResult;
+var firstNumber = null;
+var secondNumber = null;
+var finalResult = null;
 var display = $("input[name='display']");
 var operatorCount = 0;
 var operator;
