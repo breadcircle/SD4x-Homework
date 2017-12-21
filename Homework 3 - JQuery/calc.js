@@ -32,10 +32,10 @@ $('#button0, #button1, #button2, #button3, #button4, #button5, #button6, #button
 
     // assign values to var firstNumber and secondNumber
     // if firstNumber is not assigned anything, convert value to number and plug it in
-    if (firstNumber === null) {
-        firstNumber = Number.parseInt(value);
-    } else {
+    if (operatorCount >= 1) {
         secondNumber = Number.parseInt(value);
+    } else {
+        firstNumber = Number.parseInt(value);
     }
     // keep track of operator
     return false;
@@ -60,14 +60,12 @@ $('#equalsButton').click(function() {
         finalResult = firstNumber / secondNumber;
     }
 
+    display.val(finalResult);
+
     // if the first and second var are used and an operator is clicked again
     // secondNumber should move to first number and then clear itself
-    if (operatorCount > 1 && firstNumber !== null && secondNumber !== null) {
-        firstNumber = finalResult;
-        secondNumber = null;
-    }
-
-    display.val(finalResult);
+    firstNumber = finalResult;
+    secondNumber = null;
 })
 
 
