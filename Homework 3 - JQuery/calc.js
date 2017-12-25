@@ -48,25 +48,32 @@ $('#addButton, #subtractButton, #multiplyButton, #divideButton').click(function(
 });
 
 $('#equalsButton').click(function() {
-    console.log("FirstNumber = " + firstNumber + ", secondNumber = " + secondNumber);
-    
     if (operator === '+') {
         finalResult = firstNumber + secondNumber;
     } else if (operator === '-') {
         finalResult = firstNumber - secondNumber;
+    } else if (operator === '&#247;') { // it never seems to enter the division case
+        console.log("in division case");
+        if (firstNumber === 0 || secondNumber === 0) {
+            finalResult = "Infinity";
+            console.log("has reached infinity");
+        } else {
+            finalResult = firstNumber / secondNumber;
+        }
     } else if (operator === '*') {
         finalResult = firstNumber * secondNumber;
-    } else if (operator === '÷') {
-        finalResult = firstNumber / secondNumber;
     }
 
+    console.log("FirstNumber = " + firstNumber + "; operator = " + operator + 
+                ", secondNumber = " + secondNumber + "; finalResult = " + finalResult);
     display.val(finalResult);
 
     // if the first and second var are used and an operator is clicked again
     // secondNumber should move to first number and then clear itself
     firstNumber = finalResult;
     secondNumber = null;
-})
+    finalResult = null;
+});
 
 
 
