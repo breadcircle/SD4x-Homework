@@ -14,7 +14,8 @@ $('#clearButton').click(function() {
     finalResult = null;
     display.val('');
     operatorCount = 0;
-    // console.log("calculator is cleared, firstNumber is " + firstNumber + "and secondNumber is " + secondNumber);
+
+    return false;
 });
 
 $('#button0, #button1, #button2, #button3, #button4, #button5, #button6, #button7, #button8, #button9').click(function() {
@@ -37,7 +38,7 @@ $('#button0, #button1, #button2, #button3, #button4, #button5, #button6, #button
     } else {
         firstNumber = Number.parseInt(value);
     }
-    // keep track of operator
+    
     return false;
 });
 
@@ -45,6 +46,7 @@ $('#addButton, #subtractButton, #multiplyButton, #divideButton').click(function(
     operator = $(this).val();
     display.val('');
     operatorCount = operatorCount + 1;
+    return false;
 });
 
 $('#equalsButton').click(function() {
@@ -52,11 +54,9 @@ $('#equalsButton').click(function() {
         finalResult = firstNumber + secondNumber;
     } else if (operator === '-') {
         finalResult = firstNumber - secondNumber;
-    } else if (operator === '÷') { // it never seems to enter the division case
-        console.log("in division case");
+    } else if (operator === '÷') { 
         if (firstNumber === 0 || secondNumber === 0) {
             finalResult = "Infinity";
-            console.log("has reached infinity");
         } else {
             finalResult = firstNumber / secondNumber;
         }
@@ -73,6 +73,8 @@ $('#equalsButton').click(function() {
     firstNumber = finalResult;
     secondNumber = null;
     finalResult = null;
+
+    return false;
 });
 
 
