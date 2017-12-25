@@ -42,7 +42,7 @@ $('#button0, #button1, #button2, #button3, #button4, #button5, #button6, #button
 });
 
 $('#addButton, #subtractButton, #multiplyButton, #divideButton').click(function() {
-    operator = $(this).html();
+    operator = $(this).val();
     display.val('');
     operatorCount = operatorCount + 1;
 });
@@ -52,7 +52,7 @@ $('#equalsButton').click(function() {
         finalResult = firstNumber + secondNumber;
     } else if (operator === '-') {
         finalResult = firstNumber - secondNumber;
-    } else if (operator === '&#247;') { // it never seems to enter the division case
+    } else if (operator === '÷') { // it never seems to enter the division case
         console.log("in division case");
         if (firstNumber === 0 || secondNumber === 0) {
             finalResult = "Infinity";
