@@ -31,25 +31,24 @@ $('#button0, #button1, #button2, #button3, #button4, #button5, #button6, #button
         display.val(value);
     }
 
-    // assign values to var firstNumber and secondNumber
-    // if firstNumber is not assigned anything, convert value to number and plug it in
-    if (operatorCount >= 1) {
-        secondNumber = Number.parseInt(value);
-    } else {
-        firstNumber = Number.parseInt(value);
-    }
-    
     return false;
 });
 
 $('#addButton, #subtractButton, #multiplyButton, #divideButton').click(function() {
+    // assign display value into firstNumber
+    firstNumber = Number.parseInt(display.val());
+    // assign clicked button value to operator
     operator = $(this).val();
+    // clear display, to prepare for next set of numbers
     display.val('');
     operatorCount = operatorCount + 1;
     return false;
 });
 
 $('#equalsButton').click(function() {
+    // assign display value into secondNumber
+    secondNumber = Number.parseInt(display.val());
+
     if (operator === '+') {
         finalResult = firstNumber + secondNumber;
     } else if (operator === '-') {
