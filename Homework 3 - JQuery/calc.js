@@ -1,6 +1,3 @@
-/*
- * Implement all your JavaScript in this file!
- */
 var firstNumber = null;
 var secondNumber = null;
 var finalResult = null;
@@ -15,21 +12,26 @@ $('#clearButton').click(function() {
     display.val('');
     operatorCount = 0;
 
+    // returns false so that the page does not restart
     return false;
 });
 
 $('#button0, #button1, #button2, #button3, #button4, #button5, #button6, #button7, #button8, #button9').click(function() {
+
+    // if finalResult is previously calculated, and a number is clicked directly after, 
+    // a new calculation should occur
+    // display only shows the clicked number
+    if (secondNumber === Number.parseInt(display.val())) {
+        display.val('');
+        secondNumber = null;
+    } 
+    
     // on any of the numbers, on click, append to display,
     var value = $(this).val();
 
-    // if there is no value in the display, add it
-    if (!display.val()) {
-        display.val(value);
-    } else {
-        // else, take the current value in display, and concatenate it to the current value
-        value = display.val() + value;
-        display.val(value);
-    }
+    // take the current value in display, and concatenate it to the current value
+    value = display.val() + value;
+    display.val(Number.parseInt(value));
 
     return false;
 });
@@ -37,10 +39,13 @@ $('#button0, #button1, #button2, #button3, #button4, #button5, #button6, #button
 $('#addButton, #subtractButton, #multiplyButton, #divideButton').click(function() {
     // assign display value into firstNumber
     firstNumber = Number.parseInt(display.val());
+
     // assign clicked button value to operator
     operator = $(this).val();
+
     // clear display, to prepare for next set of numbers
     display.val('');
+
     operatorCount = operatorCount + 1;
     return false;
 });
@@ -70,8 +75,7 @@ $('#equalsButton').click(function() {
     // if the first and second var are used and an operator is clicked again
     // secondNumber should move to first number and then clear itself
     firstNumber = finalResult;
-    secondNumber = null;
-    finalResult = null;
+    secondNumber = finalResult;
 
     return false;
 });
